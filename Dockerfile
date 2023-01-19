@@ -1,6 +1,6 @@
 #build
 FROM node:16 as build
-WORKDIR /nest_backend
+WORKDIR /nestbackend
 COPY package*.json ./
 RUN npm install
 COPY . .
