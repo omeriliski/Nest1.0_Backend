@@ -20,7 +20,6 @@ const io = new socketio(httpServer, {
   },
 });
 
-
 dotenv.config();
 app.use(express.json());
 app.use(cors());
