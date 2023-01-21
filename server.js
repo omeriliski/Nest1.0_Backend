@@ -26,7 +26,7 @@ app.use(cors());
 connectDb();
 
 // routes
-app.get("https://nestbackend-sjpjiklsqa-ey.a.run.app",(req,res)=>{
+app.get("/",(req,res)=>{
   res.send("Hallooo")
 })
 app.use("/api/user", userRouter);
@@ -45,7 +45,7 @@ app.use((error, req, res, next) => {
   });
 });
 // httpServer.listen(process.env.PORT, () => {
-httpServer.listen(7777, () => {
+httpServer.listen("https://nestbackend-sjpjiklsqa-ey.a.run.app", () => {
   console.log(`listening to http://localhost:${process.env.PORT}`);
   io.on("connection", (socket) => {
     // socket.emit("Welcome_message", `Welcome Nasim ${socket.id}`);
