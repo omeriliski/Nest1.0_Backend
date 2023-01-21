@@ -26,7 +26,7 @@ app.use(cors());
 connectDb();
 
 // routes
-app.get("ttps://nestbackend-sjpjiklsqa-ey.a.run.app/",(req,res)=>{
+app.get("https://nestbackend-sjpjiklsqa-ey.a.run.app/",(req,res)=>{
   res.send("Hallooo")
 })
 app.use("/api/user", userRouter);
