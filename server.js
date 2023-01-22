@@ -27,7 +27,7 @@ connectDb();
 
 // routes
 app.get("/",(req,res)=>{
-  res.send("Hallooo")
+  res.send("Hallo")
 })
 app.use("/api/user", userRouter);
 app.use("/api/house", houseRouter);
