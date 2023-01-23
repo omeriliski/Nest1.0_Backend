@@ -36,29 +36,29 @@ userRouter
     .post("/register",
         // userValidators, 
         async (req, res, next) => {
-            res.send(req.body);
-            // try {
-            //     const errors = validationResult(req)
-            //     if (!errors.isEmpty()) {
-            //         return res.status(400).send({
-            //             errors: errors.array().map(e => e.msg)
-            //         })
-            //     }
-            //     const user = await User.register(req.body)
-            //     if (user) {
-            //         /////// TOKEN ..........................
-            //         const payload = {
-            //             userId: user._id
-            //         }
-            //         const options = {
-            //             expiresIn: "60m"
-            //         }
-            //         const token = jwt.sign(payload, process.env.SECRET, options)
-            //         return res.send({ ...user.toJSON(), token }).status({ Login: 'success!!' })
-            //     }
-            // } catch (err) {
-            //     next(createError(400, err.message))
-            // }
+            console.log('req.body :>> ', req.body);
+            try {
+                const errors = validationResult(req)
+                if (!errors.isEmpty()) {
+                    return res.status(400).send({
+                        errors: errors.array().map(e => e.msg)
+                    })
+                }
+                const user = await User.register(req.body)
+                if (user) {
+                    /////// TOKEN ..........................
+                    const payload = {
+                        userId: user._id
+                    }
+                    const options = {
+                        expiresIn: "60m"
+                    }
+                    const token = jwt.sign(payload, process.env.SECRET, options)
+                    return res.send({ ...user.toJSON(), token }).status({ Login: 'success!!' })
+                }
+            } catch (err) {
+                next(createError(400, err.message))
+            }
         }
     )
 
