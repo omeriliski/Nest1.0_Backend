@@ -12,13 +12,13 @@ import { Server as socketio } from "socket.io";
 import checkToken from "./middleware/checkToken.js";
 
 const app = express();
-const httpServer = http.createServer(app);
-const io = new socketio(httpServer, {
-  cors: {
-    origin: "*",
-    methods: ["GET", "POST", "OPTIONS"],
-  },
-});
+// const httpServer = http.createServer(app);
+// const io = new socketio(httpServer, {
+//   cors: {
+//     origin: "*",
+//     methods: ["GET", "POST", "OPTIONS"],
+//   },
+// });
 
 dotenv.config();
 app.use(express.json());
@@ -45,26 +45,26 @@ app.use((error, req, res, next) => {
   });
 });
 // httpServer.listen(process.env.PORT, () => {
-httpServer.listen(8080, () => {
+app.listen(8080, () => {
   console.log(`listening to http://localhost:${process.env.PORT}`);
-  io.on("connection", (socket) => {
-    // socket.emit("Welcome_message", `Welcome Nasim ${socket.id}`);
-    // console.log(socket)
+  // io.on("connection", (socket) => {
+  //   // socket.emit("Welcome_message", `Welcome Nasim ${socket.id}`);
+  //   // console.log(socket)
     
-    //to disconnect
-    // socket.on('forceDisconnect', function(){
-    //   socket.disconnect();
-    //   console.log('disconnected :>> ');
-    // });
+  //   //to disconnect
+  //   // socket.on('forceDisconnect', function(){
+  //   //   socket.disconnect();
+  //   //   console.log('disconnected :>> ');
+  //   // });
 
-    socket.on("Send_Message", (data) => {
-      console.log("data :>> ", data);
-      console.log("socket.id :>> ", socket.id);
-      try {
-        io.emit(data.conversationId, data);
-      } catch (error) {
-        console.log('error :>> ', error);
-      }
-    });
-  });
+  //   socket.on("Send_Message", (data) => {
+  //     console.log("data :>> ", data);
+  //     console.log("socket.id :>> ", socket.id);
+  //     try {
+  //       io.emit(data.conversationId, data);
+  //     } catch (error) {
+  //       console.log('error :>> ', error);
+  //     }
+  //   });
+  // });
 });
