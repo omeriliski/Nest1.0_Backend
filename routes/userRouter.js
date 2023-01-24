@@ -36,7 +36,6 @@ userRouter
     .post("/register",
         // userValidators, 
         async (req, res, next) => {
-            res.send(process.env)
             try {
                 const errors = validationResult(req)
                 if (!errors.isEmpty()) {
