@@ -1,9 +1,9 @@
 on: push
 jobs:
-  build-node:
+  build:
     runs-on: ubuntu-latest
     container: node:16
-    environment: DB_USER
+    environment: dev
     steps: 
       - run: node --version
       - run: npm --version
