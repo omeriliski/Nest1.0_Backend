@@ -77,6 +77,6 @@ userSchema.pre('remove', async function() {
   await House.deleteMany({ author: this._id })
   await Review.deleteMany({ author: this._id })
 })
-
+ 
 const User = model("user",userSchema);
 export default User;
