@@ -45,7 +45,7 @@ app.use((error, req, res, next) => {
   });
 });
 // httpServer.listen(process.env.PORT, () => {
-console.log('process !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 ', process);
+console.log('process !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 ', process.dev);
 httpServer.listen(8080, () => {
   console.log(`listening to http://localhost:${process.env.PORT}`);
   io.on("connection", (socket) => {
