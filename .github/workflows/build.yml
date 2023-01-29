@@ -3,6 +3,7 @@ jobs:
   build-node:
     runs-on: ubuntu-latest
     container: node:16
+    environment: DB_USER
     steps: 
       - run: node --version
       - run: npm --version
