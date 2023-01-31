@@ -1,11 +1,11 @@
 on: push
 env:
   DB_USER: ${{ secrets.DB_USER }}
-           ${{ secrets.DB_PASS }}
-           ${{ secrets.DB_HOST }}
-           ${{ secrets.DB_NAME }}
-           ${{ secrets.PORT }}
-           ${{ secrets.SECRET }}
+  DB_PASS: ${{ secrets.DB_PASS }}
+  DB_HOST: ${{ secrets.DB_HOST }}
+  DB_NAME: ${{ secrets.DB_NAME }}
+  PORT:    ${{ secrets.PORT }}
+  SECRET:  ${{ secrets.SECRET }}
 jobs:
   build:
     runs-on: ubuntu-latest
