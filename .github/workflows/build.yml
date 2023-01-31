@@ -1,6 +1,6 @@
 on: push
 env:
-  DB_USER: ${{ secrets.dev..DB_USER }}
+  DB_USER: ${{ secrets.dev.DB_USER }}
 jobs:
   build:
     runs-on: ubuntu-latest
