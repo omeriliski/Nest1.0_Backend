@@ -1,5 +1,3 @@
-name: Node.js CI
-
 on: push
 env:
   DB_USER: ${{ secrets.DB_USER }}
@@ -10,22 +8,16 @@ env:
   SECRET:  ${{ secrets.SECRET }}
 jobs:
   build:
-    runs-on: self-hosted
-    strategy:
-      matrix:
-        node-version: [16.x]
+    runs-on: ubuntu-latest
+    container: node:16
     environment: dev
     steps: 
       - run: node --version
       - run: npm --version
-      - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
-      - uses: actions/setup-node@v1
-      - with: 
-          node-version: ${{ matrix.node-version }}
+      - uses: actions/checkout@v3
       - run: npm install
       - name: create env file
-      - run: |
+        run: |
           touch .env
           echo DB_USER=${{ secrets.DB_USER }} >> .env
           echo DB_PASS=${{ secrets.DB_PASS }} >> .env
@@ -33,3 +25,4 @@ jobs:
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
           echo PORT=${{ secrets.PORT }} >> .env
           echo SECRET=${{ secrets.SECRET }} >> .env
+      - run: node server.js
