@@ -16,16 +16,14 @@ jobs:
         node-version: [16.x]
     environment: dev
     steps: 
-      - run: node --version
-      - run: npm --version
       - uses: actions/checkout@v2
       - name: Use Node.js ${{ matrix.node-version }}
-      - uses: actions/setup-node@v1
-      - with: 
+        uses: actions/setup-node@v1
+        with: 
           node-version: ${{ matrix.node-version }}
       - run: npm install
       - name: create env file
-      - run: |
+        run: |
           touch .env
           echo DB_USER=${{ secrets.DB_USER }} >> .env
           echo DB_PASS=${{ secrets.DB_PASS }} >> .env
