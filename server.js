@@ -46,7 +46,7 @@ app.use((error, req, res, next) => {
 });
 // httpServer.listen(process.env.PORT, () => {
 console.log('process.env !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!1 ', process.env);
-httpServer.listen(8080, () => {
+httpServer.listen(process.env.PORT, () => {
   console.log(`listening to http://localhost:${process.env.PORT}`);
   io.on("connection", (socket) => {
     // socket.emit("Welcome_message", `Welcome Nasim ${socket.id}`);
