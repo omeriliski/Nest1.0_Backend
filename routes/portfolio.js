@@ -15,8 +15,14 @@ portfolioRouter.post("/savePost", async(req, res, next)=>{
       }
 })
 
-portfolioRouter.get("/hallo", (req,res)=>{
-    res.send("hallo")
+portfolioRouter.get("/getPosts", (req,res)=>{
+    console.log("getPosts");
+    try {
+        const posts = Portfolio.find({});
+        res.send(posts);
+    } catch (error) {
+        console.log(error);
+    }
 })
 
 export default portfolioRouter;
