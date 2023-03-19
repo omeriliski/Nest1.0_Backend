@@ -4,6 +4,7 @@ import cors from "cors";
 import userRouter from "./routes/userRouter.js";
 import houseRouter from "./routes/houseRouter.js";
 import reviewRouter from "./routes/reviewRouter.js";
+import portfolioRouter from "./routes/portfolio.js";
 import conversationRouter from "./routes/Conversation.js";
 import { connectDb } from "./lib/db.js";
 import createError from "http-errors";
@@ -29,10 +30,15 @@ connectDb();
 app.get("/",(req,res)=>{
   res.send("Hallo")
 })
+
+app.use("/api/portfolio", portfolioRouter);
+
 app.use("/api/user", userRouter);
 app.use("/api/house", houseRouter);
 app.use("/api/review", reviewRouter);
 app.use("/api/conversation", conversationRouter);
+
+
 app.use((req,res,next) => {
   next(createError( 404, `Resource ${req.method} ${req.url} not found` ))
 })
